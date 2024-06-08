@@ -7,6 +7,7 @@ import login from "./controller/login.js";
 import createText from "./controller/todos/createTodo.js";
 import getTodos from "./controller/todos/getTodo.js";
 import middleware from "./middleware/middleware.js";
+import updateTodo from "./controller/todos/updateTodo.js";
 
 const app = express();
 
@@ -21,4 +22,5 @@ app.get("/login", login);
 app.get("/getTodos",middleware, getTodos);
 app.post("/register", register);
 app.post("/text",middleware, createText);
+app.put("/updateTodo/:id", middleware, updateTodo);
 app.listen(1002);
