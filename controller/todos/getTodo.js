@@ -1,12 +1,15 @@
 import { passport } from "../../database/DBINIT.js";
 
 const queryDB = `
-    SELECT id, todos FROM todos
+    SELECT id, todos, user_id FROM todos WHERE user_id = $1
 `;
 
 const getTodos = async (req,res) => {
     try{
-        const data = await passport.query(queryDB);
+        const user_id = req.id;
+
+        const data = await passport.query(queryDB, [user_id]);
+        console.log(data)
         res.status(201).json({
             message: data.rows
         })
