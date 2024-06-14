@@ -5,7 +5,7 @@ import createTodo from "../model/todos.js";
 
 const {Pool} = pg;
 
-const passport = new Pool({
+export const passport = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: {
         rejectUnauthorized: false
