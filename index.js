@@ -14,9 +14,9 @@ const app = express();
 
 // utk kita return response dari database ke frontend
 const corsOptions = {
-    origin: 'https://mencubatestreact3.onrender.com/',
+    origin: 'https://mencubatestreact3.onrender.com',
     methods: "POST",
-    allowedHeaders: ['Content-Type', 'Authorization']
+    allowedHeaders: 'Content-Type'
 };
 app.use(cors(corsOptions));
 
