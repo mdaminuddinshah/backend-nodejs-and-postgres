@@ -5,14 +5,11 @@ import createTodo from "../model/todos.js";
 
 const {Pool} = pg;
 
-export const passport  = new Pool({
-    host: process.env.PGHOST,
-    user: process.env.PGUSER,
-    database: process.env.PGDATABASE,
-    password: process.env.PGPASSWORD,
-    max: 20,
-    idleTimeoutMillis: 3000,
-    connectionTimeoutMillis: 2000
+const passport = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
 const connectDB = async () => {

@@ -8,17 +8,25 @@ import createText from "./controller/todos/createTodo.js";
 import getTodos from "./controller/todos/getTodo.js";
 import middleware from "./middleware/middleware.js";
 import updateTodo from "./controller/todos/updateTodo.js";
+import cors from "cors";
 
 const app = express();
+
+// utk kita return response dari database ke frontend
+const corsOptions = {
+    origin: 'http://localhost:5173',
+    optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 connectDB();
 
-app.get("/health", health);
+app.get("/", health);
 app.get("/users", getData);
-app.get("/login", login);
+app.post("/login", login);
 app.get("/getTodos",middleware, getTodos);
 app.post("/register", register);
 app.post("/text",middleware, createText);
