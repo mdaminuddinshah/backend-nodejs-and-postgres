@@ -14,7 +14,7 @@ const app = express();
 
 // utk kita return response dari database ke frontend
 const corsOptions = {
-    origin: 'http://localhost:5173',
+    origin: 'https://mencubatestreact3.onrender.com/',
     optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
