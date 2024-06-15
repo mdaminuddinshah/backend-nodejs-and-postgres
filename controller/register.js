@@ -1,5 +1,6 @@
 import { passport } from "../database/DBINIT.js";
 import bcrypt from "bcrypt";
+import {connectDB} from "../database/DBINIT.js";
 
 const queryTableUser = `
     INSERT INTO users(email, username, password)
@@ -37,6 +38,7 @@ const register = async (req,res) => {
             })
         };
         console.log("amin3");
+        console.log(connectDB);
         // check email exist or not
         const isEmailExist = await passport.query(checkEmail, [email]);
         console.log(isEmailExist);

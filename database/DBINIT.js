@@ -12,7 +12,7 @@ export const passport = new Pool({
     // }
 });
 
-const connectDB = async () => {
+export const connectDB = async () => {
     try{
         await passport.query("SELECT NOW()");
         console.log("Connected DB");
