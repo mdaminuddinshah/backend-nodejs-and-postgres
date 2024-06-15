@@ -27,15 +27,6 @@ const register = async (req,res) => {
                 message: "email, username and password cannot empty"
             })
         };
-
-        console.log("amin3");
-        // check email exist or not
-        const isEmailExist = await passport.query(checkEmail, [email]);
-        if(isEmailExist.rows.length > 0){
-            return res.status(404).json({
-                message: "email already exist"
-            })
-        }
         console.log("amin2");
         // check email valid or not
         const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -45,7 +36,15 @@ const register = async (req,res) => {
                 message: "email invalid"
             })
         };
-       
+        console.log("amin3");
+        // check email exist or not
+        const isEmailExist = await passport.query(checkEmail, [email]);
+        console.log(isEmailExist);
+        if(isEmailExist.rows.length > 0){
+            return res.status(404).json({
+                message: "email already exist"
+            })
+        }
         console.log("amin4");
         // check username exist or not
         const isUsername = await passport.query(checkUsername, [username]);
