@@ -20,13 +20,14 @@ const register = async (req,res) => {
         const username = req.body.username;
         const password = req.body.password;
 
+        console.log("amin1");
         // check username, email and password must fill
         if(!email || !username || !password){
             return res.status(404).json({
                 message: "email, username and password cannot empty"
             })
         };
-
+        console.log("amin2");
         // check email valid or not
         const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const isEmail = regexEmail.test(email);
@@ -35,7 +36,7 @@ const register = async (req,res) => {
                 message: "email invalid"
             })
         };
-
+        console.log("amin3");
         // check email exist or not
         const isEmailExist = await passport.query(checkEmail, [email]);
         if(isEmailExist.rows.length > 0){
@@ -43,7 +44,7 @@ const register = async (req,res) => {
                 message: "email already exist"
             })
         }
-
+        console.log("amin4");
         // check username exist or not
         const isUsername = await passport.query(checkUsername, [username]);
         if(isUsername.rows.length > 0){
@@ -51,7 +52,7 @@ const register = async (req,res) => {
                 message: "username already exist"
             })
         };
-
+        console.log("amin5");
         // change password to hash
         const saltRounds = 12;
         const hash = bcrypt.genSaltSync(saltRounds);
