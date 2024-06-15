@@ -13,7 +13,7 @@ const queryTable =  `
 const createTableUser = async () => {
     try{
         await passport.query(queryTable);
-        console.log("table created")
+        console.log("users table created")
     } catch(err){
         console.log("error")
     }
